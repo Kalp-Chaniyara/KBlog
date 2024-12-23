@@ -65,7 +65,8 @@ export const createPost = async (req, res) => {
 
 export const getAllPosts = async (req, res) => {
      try {
-          const posts = await Post.find().populate('author', 'fullName').sort({ createdAt: -1 }); // Fetch with populated author name
+          const {category} = req.query;
+          const posts = await Post.find(category?{categoryOfPost:category}:{}).populate('author', 'fullName').sort({ createdAt: -1 }); // Fetch with populated author name
 
           res.status(200).json(posts);
      } catch (error) {
