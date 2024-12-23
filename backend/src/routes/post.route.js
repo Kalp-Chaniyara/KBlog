@@ -2,6 +2,7 @@ import { Router } from "express";
 import { createPost } from "../controllers/post.controller.js";
 import { validateToken } from "../middlewares/auth.middleware.js";
 import multer from "multer";
+import { getAllPosts } from "../controllers/post.controller.js";
 
 const storage = multer.diskStorage({
      destination: (req, file, cb) => {
@@ -26,5 +27,7 @@ router.post("/upload", upload.single('file'), (req, res) => {
 });
 
 router.post("/create-post", validateToken, createPost);
+
+router.get("/allPosts",getAllPosts);
 
 export default router
