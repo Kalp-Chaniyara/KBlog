@@ -1,5 +1,6 @@
 import Post from "../models/post.model.js";
 import cloudinary from "../lib/cloudinary.js";
+import { unlinkSync } from 'fs';
 
 export const createPost = async (req, res) => {
      const { title, categoryOfPost, summary, image, discription } = req.body;
@@ -8,9 +9,10 @@ export const createPost = async (req, res) => {
 
           if (!authorId)
                return res.status(400).json({ messge: "No authorId" });
+
           const uploadResponse = await cloudinary.uploader.upload(image);
-          console.log("Done111");
-          console.log("Cloudinary response",uploadResponse.secure_url);
+
+          unlinkSync(image);
 
           const newPost = new Post({
                title,
@@ -36,7 +38,3 @@ export const createPost = async (req, res) => {
           res.status(500).json({ messge: "Internal Server Error" });
      }
 }
-
-// export const uploadOnLocal = async(req,res)=>{
-
-// }
