@@ -1,6 +1,6 @@
 import axios from "axios"
 
 export const axiosInstance = axios.create({
-     baseURL: "https://kblog-fcn7.onrender.com/api",
+     baseURL: "https://kblog14.netlify.app/api",
      withCredentials: true,
 });

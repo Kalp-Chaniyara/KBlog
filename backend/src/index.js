@@ -19,7 +19,7 @@ app.use(e.urlencoded({ limit: '50mb', extended: true }));
 app.use(e.json())
 app.use(cookieParser())
 const corsConfig = {
-    origin:"https://kblog-fcn7.onrender.com",
+    origin:"https://kblog14.netlify.app",
     credentials:true,
 }
 app.use(cors(corsConfig))
