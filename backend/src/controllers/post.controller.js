@@ -103,7 +103,7 @@ export const getAllPosts = async (req, res) => {
 
 export const getPerticularPost = async (req, res) => {
      try {
-          console.log(req.params.id);
+          // console.log(req.params.id);
           const post = await Post.findById(req.params.id).populate('author', 'fullName');
 
           res.status(200).json(post);

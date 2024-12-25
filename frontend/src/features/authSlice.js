@@ -52,7 +52,7 @@ export const checkAuth = () => async (dispatch) => {
     dispatch(setLoading(true));
     try {
         const res = await axiosInstance.get('/auth/check')
-        console.log("RESSS in checkAuth Slice", res);
+        // console.log("RESSS in checkAuth Slice", res);
         dispatch(setLogin(true));
     } catch (error) {
         console.log("Not login", error);

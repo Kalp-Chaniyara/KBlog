@@ -23,7 +23,7 @@ function NewPost() {
 
         reader.onload = ()=>{
             if(reader.readyState === 2){
-                console.log("READER RESULT",reader.result);
+                // console.log("READER RESULT",reader.result);
                 setFormData({...formData, image: reader.result});
             }
         };

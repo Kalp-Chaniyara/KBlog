@@ -40,7 +40,7 @@ function Home() {
         const fetchData = async () => {
             try {
                 if (currentID) {
-                    console.log("IDDD", currentID);
+                    // console.log("IDDD", currentID);
                     const res = await axiosInstance.get(`/post${`/id/${encodeURIComponent(currentID)}`}`);  //! here query is not going to work bcz useState is asyncronous
                     setPost([res.data]);
                 } else if (queryy) {
