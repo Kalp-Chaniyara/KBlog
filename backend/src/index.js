@@ -14,14 +14,12 @@ if(process.env.NODE_ENV !== "production"){
 
 const corsConfig = {
     origin:process.env.CLIENT_URL,
-    credentials:true
+    credentials:true,
+    methods:["GET","POST","PUT","DELETE"]
 }
 
 const app = e()
 
-const PORT = process.env.PORT || 8001
-
-app.options("",cors(corsConfig))
 app.use(e.json({ limit: '50mb' }));
 app.use(e.urlencoded({ limit: '50mb', extended: true }));
 
@@ -32,7 +30,7 @@ app.use(cors(corsConfig))
 app.use("/api/auth",authRoutes)
 app.use("/api/post",postRoutes)
 
-app.listen(PORT,()=>{
-    console.log("server is lsitening on port:" + PORT);
+app.listen(process.env.PORT,()=>{
+    console.log("server is lsitening on port:" + process.env.PORT);
     connectDB();
 })
