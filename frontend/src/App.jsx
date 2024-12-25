@@ -28,6 +28,7 @@ function App() {
             ) : (
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="/post/id/:id" element={<Home />} />
                     <Route path="/search" element={<Home />} />
                     <Route path="/signup" element={!isLogin ? <SignUp /> : <Navigate to="/" />} />
                     <Route path="/login" element={!isLogin ? <Login /> : <Navigate to="/" />} />

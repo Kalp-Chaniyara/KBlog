@@ -22,8 +22,6 @@ function NewPost() {
 
         const form = {file}
 
-        console.log("Form's File",form.file);
-
         try {
             const res = await axiosInstance.post('/post/upload', form,
                 {
@@ -33,7 +31,7 @@ function NewPost() {
                 }
             );
 
-            setFormData({...formData,image:res.data.localPath})
+            setFormData({...formData,image:res.data.outputPath})
         } catch (error) {
             console.error('Error uploading file:', error);
         }
@@ -43,7 +41,7 @@ function NewPost() {
         e.preventDefault();
         setIsSubmitting(true); // Start local loading state
         try {
-            const res = await axiosInstance.post('/post/create-post',formData);
+            const res = await axiosInstance.post('/post/create-post', formData);
             toast.success("Post created successfully");
             navigate('/');
         } catch (error) {

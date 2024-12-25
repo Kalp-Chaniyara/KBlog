@@ -10,6 +10,8 @@ export const createPost = async (req, res) => {
           if (!authorId)
                return res.status(400).json({ messge: "No authorId" });
 
+          console.log("IMAGE IN CONTROLLER", image);
+
           let uploadResponse;
           if (image) {
                uploadResponse = await cloudinary.uploader.upload(image);
@@ -71,6 +73,18 @@ export const getAllPosts = async (req, res) => {
           res.status(200).json(posts);
      } catch (error) {
           console.log("Error in fetching all the posts", error.message);
+          res.status(500).json({ message: "Intenal Server Error" })
+     }
+}
+
+export const getPerticularPost = async (req, res) => {
+     try{
+          console.log(req.params.id);
+          const post = await Post.findById(req.params.id).populate('author', 'fullName');
+
+          res.status(200).json(post);
+     }catch(error){
+          console.log("Error in fetching perticular post", error.message);
           res.status(500).json({ message: "Intenal Server Error" })
      }
 }

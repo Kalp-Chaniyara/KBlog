@@ -25,6 +25,29 @@
 //   }
 
 import plugin from "tw-elements-react/dist/plugin.cjs";
+// // import pluginn from "shrutibalasa/tailwind-grid-auto-fit";
+// // const gridAutoFit = require('@shrutibalasa/tailwind-grid-auto-fit');
+import gridAutoFit from '@shrutibalasa/tailwind-grid-auto-fit';
+
+// /** @type {import('tailwindcss').Config} */
+// const config = {
+//   content: [
+//     "./index.html",
+//     "./src/**/*.{js,ts,jsx,tsx}",
+//     "./node_modules/tw-elements-react/dist/js/**/*.js",
+//   ],
+//   theme: {
+//     extend: {
+//       screens:{
+//         'lg':'1200px'
+//       }
+//     },
+//   },
+//   darkMode: "class",
+//   plugins: [plugin,gridAutoFit],
+// };
+
+// export default config;
 
 /** @type {import('tailwindcss').Config} */
 const config = {
@@ -37,7 +60,7 @@ const config = {
     extend: {},
   },
   darkMode: "class",
-  plugins: [plugin],
+  plugins: [plugin,gridAutoFit],
 };
 
 export default config;

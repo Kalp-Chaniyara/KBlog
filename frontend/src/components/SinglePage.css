@@ -1,0 +1,16 @@
+.container {
+     /* max-width: 960px; */
+     margin: 0 auto;
+     padding: 2rem;
+   }
+   
+   .article-content {
+     margin-top: 4rem;
+   }
+   
+   /* Add more custom styles here, such as: */
+   /* - Background color */
+   /* - Typography (font family, font size, line height) */
+   /* - Spacing adjustments */
+   /* - Border radius */
+   /* - Shadows */
