@@ -13,28 +13,23 @@ function NewPost() {
         title: "",
         categoryOfPost: "",
         summary: "",
-        image: "",
+        image: null,
         discription: ""
     });
 
     const handleImageUpload = async (e) => {
-        const file = e.target.files[0];
 
-        const form = {file}
+        const reader = new FileReader();
 
-        try {
-            const res = await axiosInstance.post('/post/upload', form,
-                {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                    },
-                }
-            );
+        reader.onload = ()=>{
+            if(reader.readyState === 2){
+                console.log("READER RESULT",reader.result);
+                setFormData({...formData, image: reader.result});
+            }
+        };
 
-            setFormData({...formData,image:res.data.outputPath})
-        } catch (error) {
-            console.error('Error uploading file:', error);
-        }
+        reader.readAsDataURL(e.target.files[0]);
+
     };
 
     const handleSubmit = async (e) => {
@@ -43,6 +38,11 @@ function NewPost() {
         try {
             const res = await axiosInstance.post('/post/create-post', formData);
             toast.success("Post created successfully");
+            formData.title = "";
+            formData.categoryOfPost = "";
+            formData.summary = "";
+            formData.image = null;
+            formData.discription = "";
             navigate('/');
         } catch (error) {
             console.log("Error while creating the post", error);

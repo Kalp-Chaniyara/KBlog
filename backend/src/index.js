@@ -12,6 +12,9 @@ const app = e()
 
 const PORT = process.env.PORT || 8001
 
+app.use(e.json({ limit: '50mb' }));
+app.use(e.urlencoded({ limit: '50mb', extended: true }));
+
 app.use(e.json())
 app.use(cookieParser())
 app.use(cors({

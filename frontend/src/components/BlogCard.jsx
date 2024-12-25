@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 const BlogCard = ({ id, image, title, summary, categoryOfPost, author }) => {
 
      return (
-          <div className="flex flex-col md:flex-row gap-8 mb-12">
+          <div className="flex flex-col md:flex-row gap-8 mb-12  hover:bg-[#d8d9ff]">
                {/* image */}
                {image && (
-                    <div className="md:hidden xl:block xl:w-1/3">
-                         <img src={image} className="rounded-2xl object-cover w-full h-full" />
+                    <div className="md:hidden xl:block w-[300px] h-[300px]">
+                         <img src={image} className="rounded-2xl w-full h-full" />
                     </div>
                )}
                {/* details */}
-               <div className="flex flex-col gap-4 xl:w-2/3">
+               <div className="flex flex-col gap-4 xl:w-2/3 break-words">
                     <Link to='/' className="text-2xl font-semibold">
                          {title}
                     </Link>
@@ -20,7 +20,7 @@ const BlogCard = ({ id, image, title, summary, categoryOfPost, author }) => {
                          <span>Written by</span>
                          {/* <Link className="text-blue-800" to='/'>{author}</Link> */}
                          <span className='text-blue-800'>{author}</span>
-                         <span>category is</span>
+                         <span className='text-wrap'>category is</span>
                          <Link
                          className="text-blue-800"
                          to={`/search?category=${encodeURIComponent(categoryOfPost)}`}
