@@ -6,21 +6,28 @@ import cookieParser from "cookie-parser"
 import cors from "cors"
 import postRoutes from "./routes/post.route.js"
 
-dotenv.config()
+if(process.env.NODE_ENV !== "production"){
+    dotenv.config({
+        path:"./.env",
+    });
+}
+
+const corsConfig = {
+    origin:process.env.CLIENT_URL,
+    credentials:true
+}
 
 const app = e()
 
 const PORT = process.env.PORT || 8001
 
+app.options("",cors(corsConfig))
 app.use(e.json({ limit: '50mb' }));
 app.use(e.urlencoded({ limit: '50mb', extended: true }));
 
 app.use(e.json())
 app.use(cookieParser())
-app.use(cors({
-    origin:"http://localhost:5173",
-    credentials:true,
-}))
+app.use(cors(corsConfig))
 
 app.use("/api/auth",authRoutes)
 app.use("/api/post",postRoutes)
