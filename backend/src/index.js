@@ -19,9 +19,8 @@ app.use(e.urlencoded({ limit: '50mb', extended: true }));
 app.use(e.json())
 app.use(cookieParser())
 const corsConfig = {
-    origin:process.env.CLIENT_URL,
+    origin:"http://localhost:5173",
     credentials:true,
-    methods:["GET","POST","PUT","DELETE"]
 }
 app.use(cors(corsConfig))
 
